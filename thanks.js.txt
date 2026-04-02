@@ -1,0 +1,26 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const lastLead = localStorage.getItem('lastLead');
+  const summaryDiv = document.getElementById('leadSummary');
+  
+  if (lastLead && summaryDiv) {
+    const data = JSON.parse(lastLead);
+    summaryDiv.innerHTML = `
+      <p><strong>Имя:</strong> ${escapeHtml(data.name)}</p>
+      <p><strong>Телефон:</strong> ${escapeHtml(data.phone)}</p>
+      <p><strong>Услуга:</strong> ${escapeHtml(data.service)}</p>
+      <p><strong>Комментарий:</strong> ${escapeHtml(data.message)}</p>
+    `;
+  } else if (summaryDiv) {
+    summaryDiv.innerHTML = '<p>Данные заявки не найдены. Пожалуйста, заполните форму на главной странице.</p>';
+  }
+});
+
+function escapeHtml(str) {
+  if (!str) return '—';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
