@@ -1,0 +1,14 @@
+evgeniy-master/
+│
+├── index.html
+├── spasibo.html
+├── privacy.html
+├── robots.txt
+├── sitemap.xml
+│
+└── assets/
+    ├── css/
+    │   └── styles.css
+    └── js/
+        ├── app.js
+        └── thanks.js
